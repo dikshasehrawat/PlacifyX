@@ -12,7 +12,7 @@ def explain_model(model, X_train, X_test):
     print("Generating SHAP explanations...")
     
     # Create explainer
-    explainer = shap.LinearExplainer(model, X_train)
+    explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(X_test)
     
     # Global feature importance plot

@@ -4,12 +4,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
-from sklearn.utils.class_weight import compute_sample_weight
 import joblib
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from src.data_preprocessing import load_data, preprocess_data, split_data
+from src.data_preprocessing import load_data, preprocess_data, split_data, scale_data
 
 def train_models(X_train, y_train):
     models = {
@@ -51,23 +50,21 @@ def evaluate_models(trained_models, X_test, y_test):
 def save_best_model(trained_models, results):
     best_model_name = max(results, key=lambda x: results[x]['ROC-AUC'])
     best_model = trained_models[best_model_name]
-    
     joblib.dump(best_model, "models/model.pkl")
     print(f"\nBest model: {best_model_name}")
-    print(f"Model saved to models/model.pkl")
-    
+    print(f"Saved to models/model.pkl")
     return best_model_name
 
 if __name__ == "__main__":
-    print("Loading and preprocessing data...")
     df = load_data()
     df = preprocess_data(df)
     X_train, X_test, y_train, y_test = split_data(df)
+    X_train_scaled, X_test_scaled = scale_data(X_train, X_test)
     
     print("\nTraining models...")
-    trained_models = train_models(X_train, y_train)
+    trained_models = train_models(X_train_scaled, y_train)
     
     print("\nEvaluating models...")
-    results = evaluate_models(trained_models, X_test, y_test)
+    results = evaluate_models(trained_models, X_test_scaled, y_test)
     
     save_best_model(trained_models, results)

@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
+import joblib
 
 def load_data():
     df = pd.read_csv("data/raw/placementdata.csv")
@@ -12,13 +13,11 @@ def preprocess_data(df):
     df = df.drop(columns=['StudentID'])
     
     # Encode binary categorical columns
-    le = LabelEncoder()
-    df['ExtracurricularActivities'] = le.fit_transform(df['ExtracurricularActivities'])
-    df['PlacementTraining'] = le.fit_transform(df['PlacementTraining'])
+    df['ExtracurricularActivities'] = (df['ExtracurricularActivities'] == 'Yes').astype(int)
+    df['PlacementTraining'] = (df['PlacementTraining'] == 'Yes').astype(int)
     
     # Encode target column
-    df['PlacementStatus'] = le.fit_transform(df['PlacementStatus'])
-    # NotPlaced = 0, Placed = 1
+    df['PlacementStatus'] = (df['PlacementStatus'] == 'Placed').astype(int)
     
     return df
 
@@ -27,17 +26,26 @@ def split_data(df):
     y = df['PlacementStatus']
     
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, 
-        test_size=0.2, 
+        X, y,
+        test_size=0.2,
         random_state=42,
         stratify=y
     )
     
     return X_train, X_test, y_train, y_test
 
-def save_processed_data(df):
-    df.to_csv("data/processed/cleaned_data.csv", index=False)
-    print("Processed data saved to data/processed/cleaned_data.csv")
+def scale_data(X_train, X_test):
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
+    
+    # Save scaler for use in app
+    joblib.dump(scaler, "models/scaler.pkl")
+    
+    X_train_scaled = pd.DataFrame(X_train_scaled, columns=X_train.columns)
+    X_test_scaled = pd.DataFrame(X_test_scaled, columns=X_test.columns)
+    
+    return X_train_scaled, X_test_scaled
 
 if __name__ == "__main__":
     print("Loading data...")
@@ -46,14 +54,12 @@ if __name__ == "__main__":
     print("Preprocessing data...")
     df = preprocess_data(df)
     
-    print("Saving processed data...")
-    save_processed_data(df)
-    
     print("Splitting data...")
     X_train, X_test, y_train, y_test = split_data(df)
     
-    print(f"\nTraining set size: {X_train.shape}")
-    print(f"Test set size: {X_test.shape}")
-    print(f"\nTarget distribution in training set:")
-    print(y_train.value_counts())
+    print("Scaling data...")
+    X_train_scaled, X_test_scaled = scale_data(X_train, X_test)
+    
+    print(f"\nTraining set size: {X_train_scaled.shape}")
+    print(f"Test set size: {X_test_scaled.shape}")
     print("\nPreprocessing complete!")
