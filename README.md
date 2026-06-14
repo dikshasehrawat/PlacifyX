@@ -61,8 +61,9 @@ Campus placements are a critical milestone for engineering students. This projec
 - **Deployment:** Streamlit Community Cloud
 
 ---
-
 ## 📁 Project Structure
+
+```
 PlacifyX/
 ├── data/
 │   ├── raw/                  # Raw dataset
@@ -83,6 +84,7 @@ PlacifyX/
 ├── config.py                 # Project configuration
 ├── requirements.txt          # Dependencies
 └── README.md
+```
 ---
 
 ## ⚙️ How to Run Locally
