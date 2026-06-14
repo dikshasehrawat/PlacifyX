@@ -64,7 +64,6 @@ Campus placements are a critical milestone for engineering students. This projec
 
 ## 📁 Project Structure
 PlacifyX/
-
 ├── data/
 │   ├── raw/                  # Raw dataset
 │   └── processed/            # Cleaned dataset
