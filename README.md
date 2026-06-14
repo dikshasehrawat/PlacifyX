@@ -5,8 +5,7 @@
 ---
 
 ## 🚀 Live Demo
-[Coming soon after deployment]
-
+https://placifyx-19.streamlit.app/
 ---
 
 ## 📌 Problem Statement
