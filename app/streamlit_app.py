@@ -42,7 +42,7 @@ def get_shap_explanation(model, input_data, X_train_scaled, scaler):
 # Page config
 st.set_page_config(
     page_title="PlacifyX",
-    page_icon="🎓",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -344,7 +344,7 @@ with tab1:
     
     with col1:
         st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">CGPA</p>', unsafe_allow_html=True)
-        cgpa = st.slider("", min_value=0.0, max_value=10.0, value=7.5, step=0.01, label_visibility="collapsed")
+        cgpa = st.number_input("", min_value=0.0, max_value=10.0, value=7.5, step=0.01, label_visibility="collapsed")
         cgpa_color = "🟢" if cgpa >= 8.0 else "🟡" if cgpa >= 7.0 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{cgpa_color} {cgpa:.2f} / 10.0</small>", unsafe_allow_html=True)
 
@@ -365,12 +365,12 @@ with tab1:
         st.markdown(f"<small style='color:#8b6355'>{work_color} {workshops} workshop(s)</small>", unsafe_allow_html=True)
         
         st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Aptitude Test Score</p>', unsafe_allow_html=True)
-        aptitude = st.slider("", min_value=0, max_value=100, value=75, label_visibility="collapsed")
+        aptitude = st.number_input("", min_value=0, max_value=100, value=75, label_visibility="collapsed")
         apt_color = "🟢" if aptitude >= 80 else "🟡" if aptitude >= 65 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{apt_color} <b>{aptitude}</b> / 100</small>", unsafe_allow_html=True)
         
         st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Soft Skills Rating</p>', unsafe_allow_html=True)
-        soft_skills = st.slider("", min_value=0.0, max_value=5.0, value=4.0, step=0.1, label_visibility="collapsed")
+        soft_skills = st.number_input("", min_value=0.0, max_value=5.0, value=4.0, step=0.1, label_visibility="collapsed")
         soft_color = "🟢" if soft_skills >= 4.3 else "🟡" if soft_skills >= 3.5 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{soft_color} <b>{soft_skills:.1f}</b> / 5.0</small>", unsafe_allow_html=True)
 
@@ -381,12 +381,12 @@ with tab1:
     with col3:
         
         st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Secondary School Certificate Marks (Class 10th)</p>', unsafe_allow_html=True)
-        ssc = st.slider("", min_value=0.0, max_value=100.0, value=70.0, step=0.01, label_visibility="collapsed")
+        ssc = st.number_input("", min_value=0.0, max_value=100.0, value=70.0, step=0.01, label_visibility="collapsed")
         ssc_color = "🟢" if ssc >= 75 else "🟡" if ssc >= 60 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{ssc_color} <b>{ssc:.0f}</b> / 100</small>", unsafe_allow_html=True)
 
         st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Higher Secondary Certificate Marks (Class 12th)</p>', unsafe_allow_html=True)
-        hsc = st.slider("", min_value=0.0, max_value=100.0, value=72.0, step=0.01, label_visibility="collapsed")
+        hsc = st.number_input("", min_value=0.0, max_value=100.0, value=72.0, step=0.01, label_visibility="collapsed")
         hsc_color = "🟢" if hsc >= 75 else "🟡" if hsc >= 60 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{hsc_color} <b>{hsc:.0f}</b> / 100</small>", unsafe_allow_html=True)
 
@@ -600,9 +600,9 @@ with tab2:
         for feature, user_val, avg_val in zip(numeric_features, user_values, avg_placed.values):
             diff = user_val - avg_val
             if diff >= 0:
-                strengths.append(f"✅ **{feature}:** You ({user_val:.2f}) vs Avg ({avg_val:.2f}) +{diff:.2f}")
+                strengths.append(f"**{feature}:** You ({user_val:.2f}) vs Avg ({avg_val:.2f}) +{diff:.2f}")
             else:
-                improvements.append(f"⚠️ **{feature}:** You ({user_val:.2f}) vs Avg ({avg_val:.2f}) {diff:.2f}")
+                improvements.append(f"**{feature}:** You ({user_val:.2f}) vs Avg ({avg_val:.2f}) {diff:.2f}")
 
         with col1:
             st.markdown('<p style="font-size:1.1rem; font-weight:700; color:#2d5a27;">Your Strengths</p>', unsafe_allow_html=True)
