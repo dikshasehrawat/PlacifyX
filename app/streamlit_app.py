@@ -118,6 +118,15 @@ st.markdown("""
         outline: none !important;
         box-shadow: none !important;
     }
+    div[data-testid="stNumberInput"] > div:focus-within {
+        border-color: #ddb89a !important;
+        box-shadow: none !important;
+    }
+
+    div[data-testid="stNumberInput"] input:focus {
+        box-shadow: none !important;
+        outline: none !important;
+    }
 
     div[data-testid="stNumberInput"] button {
         background-color: #f5e6d8 !important;
