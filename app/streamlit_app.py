@@ -47,21 +47,20 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap');
-    
+
     /* Hide Streamlit header */
     header[data-testid="stHeader"] {
-    background-color: transparent !important;
-    display: none !important;
+        background-color: transparent !important;
+        display: none !important;
     }
 
-    /* Hide top padding left by header */
     .block-container {
-    padding-top: 2rem !important;
+        padding-top: 2rem !important;
     }
+
     /* Global */
     html, body, [class*="css"] {
         font-family: 'Inter', sans-serif;
@@ -76,7 +75,7 @@ st.markdown("""
     /* Title */
     .main-title {
         font-family: 'Playfair Display', serif;
-        font-size: 20px;
+        font-size: 5rem;
         font-weight: 900;
         background: linear-gradient(135deg, #8B4513, #c0622a, #d4845a);
         -webkit-background-clip: text;
@@ -105,18 +104,7 @@ st.markdown("""
         border: none;
     }
 
-    /* Dropdown styling to match number input */
-    div[data-testid="stSelectbox"] > div > div {
-        background-color: #fff8f3 !important;
-        color: #2c1810 !important;
-        border: 1.5px solid #ddb89a !important;
-        border-radius: 8px !important;
-    }
-
-    div[data-testid="stSelectbox"] > div > div:hover {
-        border-color: #8B4513 !important;
-    }
-    /* Fix number input border - remove dark outline */
+    /* Number input */
     div[data-testid="stNumberInput"] > div {
         background-color: #fff8f3 !important;
         border: 1.5px solid #ddb89a !important;
@@ -138,41 +126,34 @@ st.markdown("""
         border-left: 1px solid #ddb89a !important;
     }
 
-    /* Fix dropdown open black background */
+    div[data-testid="stNumberInput"] button:hover {
+        background-color: #ddb89a !important;
+    }
+
+    /* Dropdown closed state */
+    div[data-testid="stSelectbox"] > div > div {
+        background-color: #fff8f3 !important;
+        color: #2c1810 !important;
+        border: 1.5px solid #ddb89a !important;
+        border-radius: 8px !important;
+    }
+
+    div[data-testid="stSelectbox"] > div > div:hover {
+        border-color: #8B4513 !important;
+    }
+
+    /* Dropdown open menu */
     div[data-baseweb="popover"],
     div[data-baseweb="popover"] > div,
     div[data-baseweb="popover"] ul,
     div[data-baseweb="popover"] li,
     div[data-baseweb="option"] {
-    background-color: #fff8f3 !important;
-    color: #2c1810 !important;
+        background-color: #fff8f3 !important;
+        color: #2c1810 !important;
     }
 
     div[data-baseweb="option"]:hover {
         background-color: #f5e6d8 !important;
-    }
-
- 
-
-    /* Input labels */
-    label {
-        color: #5c3317 !important;
-        font-family: 'Inter', sans-serif !important;
-        font-size: 100px !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.3px !important;
-    }
-
-    /* Slider labels */
-    .stSlider label {
-        color: #5c3317 !important;
-        font-size: 1.05rem !important;
-        font-weight: 700 !important;
-    }
-
-    /* Slider track color */
-    .stSlider [data-baseweb="slider"] [role="progressbar"] {
-        background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71) !important;
     }
 
     /* Result badges */
@@ -245,8 +226,8 @@ st.markdown("""
         background: linear-gradient(135deg, #8B4513, #c0622a);
         color: white !important;
         font-family: 'Inter', sans-serif;
-        font-weight: 900;
-        font-size: 100px !important;
+        font-weight: 700;
+        font-size: 1.1rem !important;
         letter-spacing: 2px;
         border: none;
         border-radius: 50px;
@@ -259,24 +240,6 @@ st.markdown("""
     .stButton > button:hover {
         box-shadow: 0 8px 25px #8B451366;
         transform: translateY(-2px);
-    }
-                        
-    /* Number input styling */
-    div[data-testid="stNumberInput"] input {
-        background-color: #fff8f3 !important;
-        color: #2c1810 !important;
-        border: 1.5px solid #ddb89a !important;
-        border-radius: 8px !important;
-    }
-
-    div[data-testid="stNumberInput"] button {
-        background-color: #f5e6d8 !important;
-        color: #8B4513 !important;
-        border: 1px solid #ddb89a !important;
-    }
-
-    div[data-testid="stNumberInput"] button:hover {
-        background-color: #ddb89a !important;
     }
 
     /* General text */
@@ -295,14 +258,19 @@ st.markdown("""
         font-family: 'Playfair Display', serif !important;
         font-size: 2rem !important;
     }
-    /* Progress bar color */
+
+    /* Progress bar */
     div[data-testid="stProgressBar"] > div {
-    background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71) !important;
+        background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71) !important;
     }
 
     [data-testid="stProgressBar"] [role="progressbar"] {
-    background: linear-gradient(90deg, #8B4513, #c0622a) !important;
+        background: linear-gradient(90deg, #8B4513, #c0622a) !important;
     }
+
+    /* Hide menu and footer */
+    #MainMenu { visibility: hidden !important; }
+    footer { visibility: hidden !important; }
     </style>
 """, unsafe_allow_html=True)
 st.markdown('''
