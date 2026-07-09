@@ -164,19 +164,17 @@ st.markdown("""
     div[data-baseweb="option"]:hover {
         background-color: #f5e6d8 !important;
     }
-    /* Override focus ring color */
-    div[data-testid="stNumberInput"] > div {
-        box-shadow: none !important;
+    /* Override Streamlit's internal red focus color */
+    [data-baseweb="input"] {
+        border-color: #ddb89a !important;
     }
 
-    div[data-testid="stNumberInput"] > div:focus-within {
-        border: 1.5px solid #8B4513 !important;
-        box-shadow: 0 0 0 1px #8B451344 !important;
+    [data-baseweb="input"]:focus-within {
+        border-color: #8B4513 !important;
     }
 
-    input[type="number"]:focus {
-        box-shadow: none !important;
-        outline: none !important;
+    [data-baseweb="base-input"] {
+        background-color: #fff8f3 !important;
     }
 
     /* Result badges */
