@@ -116,34 +116,43 @@ st.markdown("""
     div[data-testid="stSelectbox"] > div > div:hover {
         border-color: #8B4513 !important;
     }
-    /* Fix dropdown open menu black background */
-    div[data-baseweb="popover"] * {
+    /* Fix number input border - remove dark outline */
+    div[data-testid="stNumberInput"] > div {
+        background-color: #fff8f3 !important;
+        border: 1.5px solid #ddb89a !important;
+        border-radius: 8px !important;
+    }
+
+    div[data-testid="stNumberInput"] input {
         background-color: #fff8f3 !important;
         color: #2c1810 !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    div[data-testid="stNumberInput"] button {
+        background-color: #f5e6d8 !important;
+        color: #8B4513 !important;
+        border: none !important;
+        border-left: 1px solid #ddb89a !important;
+    }
+
+    /* Fix dropdown open black background */
+    div[data-baseweb="popover"],
+    div[data-baseweb="popover"] > div,
+    div[data-baseweb="popover"] ul,
+    div[data-baseweb="popover"] li,
+    div[data-baseweb="option"] {
+    background-color: #fff8f3 !important;
+    color: #2c1810 !important;
     }
 
     div[data-baseweb="option"]:hover {
         background-color: #f5e6d8 !important;
     }
 
-    /* Number input match theme */
-    div[data-testid="stNumberInput"] input {
-        background-color: #fff8f3 !important;
-        color: #2c1810 !important;
-        border: 1.5px solid #ddb89a !important;
-        border-radius: 8px !important;
-    }
-
-    div[data-testid="stNumberInput"] button {
-        background-color: #f5e6d8 !important;
-        color: #8B4513 !important;
-        border: 1px solid #ddb89a !important;
-    }
-
-    div[data-testid="stNumberInput"] button:hover {
-        background-color: #ddb89a !important;
-        color: #fff8f3 !important;
-    }
+ 
 
     /* Input labels */
     label {
