@@ -106,23 +106,6 @@ st.markdown("""
     }
 
     /* Dropdown container */
-    .stSelectbox div[data-baseweb="select"] > div {
-    background-color: #fff8f3 !important;
-    color: #2c1810 !important;
-    border: 1.5px solid #ddb89a !important;
-    border-radius: 8px !important;
-    }
-
-    /* Selected value text */
-    .stSelectbox div[data-baseweb="select"] span {
-    color: #2c1810 !important;
-    font-weight: 600 !important;
-    }
-
-    /* Dropdown arrow */
-    .stSelectbox svg {
-    fill: #8B4513 !important;
-    }
 
     /* Dropdown popup background */
     div[data-baseweb="popover"] {
@@ -143,6 +126,17 @@ st.markdown("""
     div[data-baseweb="popover"] li:hover {
     background-color: #f5e6d8 !important;
     color: #8B4513 !important;
+    }
+    /* Dropdown styling to match number input */
+    div[data-testid="stSelectbox"] > div > div {
+        background-color: #fff8f3 !important;
+        color: #2c1810 !important;
+        border: 1.5px solid #ddb89a !important;
+        border-radius: 8px !important;
+    }
+
+    div[data-testid="stSelectbox"] > div > div:hover {
+        border-color: #8B4513 !important;
     }
 
     /* Option text */
