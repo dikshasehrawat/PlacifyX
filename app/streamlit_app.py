@@ -164,6 +164,20 @@ st.markdown("""
     div[data-baseweb="option"]:hover {
         background-color: #f5e6d8 !important;
     }
+    /* Override focus ring color */
+    div[data-testid="stNumberInput"] > div {
+        box-shadow: none !important;
+    }
+
+    div[data-testid="stNumberInput"] > div:focus-within {
+        border: 1.5px solid #8B4513 !important;
+        box-shadow: 0 0 0 1px #8B451344 !important;
+    }
+
+    input[type="number"]:focus {
+        box-shadow: none !important;
+        outline: none !important;
+    }
 
     /* Result badges */
     .placed-badge {
