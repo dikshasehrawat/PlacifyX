@@ -261,6 +261,24 @@ st.markdown("""
         box-shadow: 0 8px 25px #8B451366;
         transform: translateY(-2px);
     }
+                        
+    /* Number input styling */
+    div[data-testid="stNumberInput"] input {
+        background-color: #fff8f3 !important;
+        color: #2c1810 !important;
+        border: 1.5px solid #ddb89a !important;
+        border-radius: 8px !important;
+    }
+
+    div[data-testid="stNumberInput"] button {
+        background-color: #f5e6d8 !important;
+        color: #8B4513 !important;
+        border: 1px solid #ddb89a !important;
+    }
+
+    div[data-testid="stNumberInput"] button:hover {
+        background-color: #ddb89a !important;
+    }
 
     /* General text */
     p, div, span, li {
