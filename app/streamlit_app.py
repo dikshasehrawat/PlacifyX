@@ -334,7 +334,7 @@ model, scaler, X_train_scaled, X_test_scaled, y_train, y_test = load_model_and_d
 
 
 # Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["🎯 Predict", "📊 Your Profile", "🔍 Model Insights", "⚖️ Bias & Fairness"])
+tab1, tab2, tab3, tab4 = st.tabs(["Predict", "Your Profile", "Model Insights", "Bias & Fairness"])
 
 # ==================== TAB 1 - PREDICT ====================
 with tab1:
@@ -343,54 +343,54 @@ with tab1:
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">🎓 CGPA</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">CGPA</p>', unsafe_allow_html=True)
         cgpa = st.slider("", min_value=0.0, max_value=10.0, value=7.5, step=0.01, label_visibility="collapsed")
         cgpa_color = "🟢" if cgpa >= 8.0 else "🟡" if cgpa >= 7.0 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{cgpa_color} {cgpa:.2f} / 10.0</small>", unsafe_allow_html=True)
 
-        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">💼 Internships</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Internships</p>', unsafe_allow_html=True)
         internships = st.selectbox("", [0, 1, 2, 3], label_visibility="collapsed")
         int_color = "🟢" if internships == 2 else "🟡" if internships == 1 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{int_color} {internships} internship(s)</small>", unsafe_allow_html=True)
         
-        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">🛠️ Projects</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Projects</p>', unsafe_allow_html=True)
         projects = st.selectbox("", [0, 1, 2, 3], key="projects", label_visibility="collapsed")
         proj_color = "🟢" if projects >= 3 else "🟡" if projects >= 1 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{proj_color} {projects} project(s)</small>", unsafe_allow_html=True)
 
     with col2:
-        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">📚 Workshops/Certifications</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Workshops/Certifications</p>', unsafe_allow_html=True)
         workshops = st.selectbox("", [0, 1, 2, 3], key="workshops", label_visibility="collapsed")
         work_color = "🟢" if workshops >= 2 else "🟡" if workshops == 1 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{work_color} {workshops} workshop(s)</small>", unsafe_allow_html=True)
         
-        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">🧠 Aptitude Test Score</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Aptitude Test Score</p>', unsafe_allow_html=True)
         aptitude = st.slider("", min_value=0, max_value=100, value=75, label_visibility="collapsed")
         apt_color = "🟢" if aptitude >= 80 else "🟡" if aptitude >= 65 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{apt_color} <b>{aptitude}</b> / 100</small>", unsafe_allow_html=True)
         
-        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">🗣️ Soft Skills Rating</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Soft Skills Rating</p>', unsafe_allow_html=True)
         soft_skills = st.slider("", min_value=0.0, max_value=5.0, value=4.0, step=0.1, label_visibility="collapsed")
         soft_color = "🟢" if soft_skills >= 4.3 else "🟡" if soft_skills >= 3.5 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{soft_color} <b>{soft_skills:.1f}</b> / 5.0</small>", unsafe_allow_html=True)
 
-        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">🎭 Extracurricular Activities</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Extracurricular Activities</p>', unsafe_allow_html=True)
         extracurricular = st.selectbox("", ["Yes", "No"], key="extracurricular", label_visibility="collapsed")
         st.markdown(f"<small style='color:#8b6355'>{'🟢' if extracurricular == 'Yes' else '🔴'} {extracurricular}</small>", unsafe_allow_html=True)
 
     with col3:
         
-        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">📝 Secondary School Certificate Marks (Class 10th)</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Secondary School Certificate Marks (Class 10th)</p>', unsafe_allow_html=True)
         ssc = st.slider("", min_value=0.0, max_value=100.0, value=70.0, step=0.01, label_visibility="collapsed")
         ssc_color = "🟢" if ssc >= 75 else "🟡" if ssc >= 60 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{ssc_color} <b>{ssc:.0f}</b> / 100</small>", unsafe_allow_html=True)
 
-        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">📝 Higher Secondary Certificate Marks (Class 12th)</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Higher Secondary Certificate Marks (Class 12th)</p>', unsafe_allow_html=True)
         hsc = st.slider("", min_value=0.0, max_value=100.0, value=72.0, step=0.01, label_visibility="collapsed")
         hsc_color = "🟢" if hsc >= 75 else "🟡" if hsc >= 60 else "🔴"
         st.markdown(f"<small style='color:#8b6355'>{hsc_color} <b>{hsc:.0f}</b> / 100</small>", unsafe_allow_html=True)
 
-        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">🏫 Placement Training</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:1.2rem; font-weight:700; color:#5c3317;">Placement Training</p>', unsafe_allow_html=True)
         placement_training = st.selectbox("", ["Yes", "No"], key="placement_training", label_visibility="collapsed")
         st.markdown(f"<small style='color:#8b6355'>{'🟢' if placement_training == 'Yes' else '🔴'} {placement_training}</small>", unsafe_allow_html=True)
         
@@ -539,13 +539,13 @@ with tab1:
 # ==================== TAB 2 - YOUR PROFILE ====================
 with tab2:
     if 'input_data' not in st.session_state:
-        st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; color:#8b6355; text-align:center; margin-top:3rem;">👆 Go to Predict tab first, enter your details and click Predict.</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; color:#8b6355; text-align:center; margin-top:3rem;">Go to Predict tab first, enter your details and click Predict.</p>', unsafe_allow_html=True)
     else:
         input_data = st.session_state['input_data']
         prediction = st.session_state['prediction']
         probability = st.session_state['probability']
 
-        st.markdown('<p style="font-family: Playfair Display, serif; font-size:2rem; font-weight:700; color:#5c3317; margin-bottom:1rem;">📊 Your Profile vs Average Placed Student</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family: Playfair Display, serif; font-size:2rem; font-weight:700; color:#5c3317; margin-bottom:1rem;">Your Profile vs Average Placed Student</p>', unsafe_allow_html=True)
 
         df_raw = load_data()
         df_placed = df_raw[df_raw['PlacementStatus'] == 'Placed']
@@ -591,7 +591,7 @@ with tab2:
             st.pyplot(fig, use_container_width=True)
 
         # Gap analysis
-        st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.8rem; font-weight:700; color:#5c3317; margin:1.5rem 0 1rem 0;">📋 Gap Analysis</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.8rem; font-weight:700; color:#5c3317; margin:1.5rem 0 1rem 0;">Gap Analysis</p>', unsafe_allow_html=True)
 
         col1, col2 = st.columns(2)
         strengths = []
@@ -621,7 +621,7 @@ with tab2:
                 st.success("You're above average in all areas!")
 
         # Placement probability
-        st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.8rem; font-weight:700; color:#5c3317; margin:1.5rem 0 1rem 0;">🎯 Your Placement Probability</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.8rem; font-weight:700; color:#5c3317; margin:1.5rem 0 1rem 0;">Your Placement Probability</p>', unsafe_allow_html=True)
         st.markdown(f'''
         <div style="text-align:center; margin: 1rem 0 0.5rem 0;">
             <p style="font-family: Playfair Display, serif; font-size: 2rem;
@@ -654,7 +654,7 @@ with tab3:
     st.markdown('<p style="font-family: Playfair Display, serif; font-size:2rem; font-weight:700; color:#5c3317; margin-bottom:1rem;">Model Performance & Insights</p>', unsafe_allow_html=True)
 
     # Model comparison table
-    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">📊 Model Comparison</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">Model Comparison</p>', unsafe_allow_html=True)
 
     model_results = {
         'Model': ['Logistic Regression', 'Random Forest', 'XGBoost'],
@@ -678,7 +678,7 @@ with tab3:
     st.markdown("---")
 
     # Confusion matrix and ROC curve side by side
-    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">📈 Evaluation Plots</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">Evaluation Plots</p>', unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
 
@@ -737,7 +737,7 @@ with tab3:
     st.markdown("---")
 
     # SHAP global feature importance
-    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">🧠 Global Feature Importance (SHAP)</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">Global Feature Importance (SHAP)</p>', unsafe_allow_html=True)
 
     explainer = shap.LinearExplainer(model, X_train_scaled)
     shap_values = explainer.shap_values(X_test_scaled)
@@ -777,15 +777,15 @@ with tab3:
 
     # Key insights
     st.markdown("---")
-    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">💡 Key Model Insights</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">Key Model Insights</p>', unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.info("🏆 **Best Model:** Logistic Regression with ROC-AUC of 0.8837")
+        st.info("**Best Model:** Logistic Regression with ROC-AUC of 0.8837")
     with col2:
-        st.info("📊 **Top Predictor:** Aptitude Test Score has highest impact on placement outcome")
+        st.info("**Top Predictor:** Aptitude Test Score has highest impact on placement outcome")
     with col3:
-        st.info("⚖️ **Class Imbalance:** Dataset has 42% placed vs 58% not placed - handled with stratified split")
+        st.info("**Class Imbalance:** Dataset has 42% placed vs 58% not placed - handled with stratified split")
 
 # ==================== TAB 4 - BIAS & FAIRNESS ====================
 with tab4:
@@ -799,7 +799,7 @@ with tab4:
     st.markdown("---")
 
     # 1. Placement rate by Extracurricular Activities
-    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">🎭 Placement Rate by Extracurricular Activities</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">Placement Rate by Extracurricular Activities</p>', unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
 
@@ -871,7 +871,7 @@ with tab4:
     st.markdown("---")
 
     # 3. CGPA distribution by placement
-    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">🎓 CGPA Distribution by Placement Status</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">CGPA Distribution by Placement Status</p>', unsafe_allow_html=True)
 
     fig3, ax3 = plt.subplots(figsize=(8, 3.5))
     fig3.patch.set_facecolor('#fff8f3')
@@ -911,7 +911,7 @@ with tab4:
     st.markdown("---")
 
     # 4. Subgroup model performance
-    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">🔬 Model Performance Across Subgroups</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">Model Performance Across Subgroups</p>', unsafe_allow_html=True)
 
     from sklearn.metrics import accuracy_score
 
@@ -965,12 +965,12 @@ with tab4:
 
     # Fairness summary
     st.markdown("---")
-    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">📋 Fairness Summary</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-family: Playfair Display, serif; font-size:1.5rem; font-weight:700; color:#5c3317; margin-bottom:0.5rem;">Fairness Summary</p>', unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.warning("⚠️ **Extracurricular Gap:** Students with extracurricular activities have significantly higher placement rates — model reflects this real-world disparity")
+        st.warning("**Extracurricular Gap:** Students with extracurricular activities have significantly higher placement rates — model reflects this real-world disparity")
     with col2:
-        st.warning("⚠️ **Training Gap:** Placement training shows a strong positive effect — colleges should ensure equal access to training programs")
+        st.warning("**Training Gap:** Placement training shows a strong positive effect — colleges should ensure equal access to training programs")
     with col3:
-        st.info("ℹ️ **CGPA Gap:** Placed students have mean CGPA of 8.02 vs 7.47 for not placed — academic performance remains a key differentiator")
+        st.info("**CGPA Gap:** Placed students have mean CGPA of 8.02 vs 7.47 for not placed — academic performance remains a key differentiator")
